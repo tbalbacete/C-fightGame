@@ -4,6 +4,8 @@
 
         static void Main(string[] args)
         {
+            bool running = true;
+            while (running){
             int score = 0;
             int health = 2000;
             monsters monster = new monsters ();
@@ -92,7 +94,21 @@
                 }
             }
             while (health > 0 );
-            Console.WriteLine($"Oh no! Your character {charName} has fallen. Your final score was {score}. Thank you for playing!");
+            Console.WriteLine($"Oh no! Your character {charName} has fallen. Your final score was {score}. Would you like to play again? y/n");
+            string playAgain = Console.ReadLine();
+            if (playAgain == "y"){
+                Console.WriteLine("Good luck!");
+                Console.Clear();
+            }
+            else if (playAgain == "n"){
+                running = false;
+                Console.WriteLine("Thank you for playing!");
+            }
+            else {
+                Console.Clear();
+                Console.WriteLine("I'm sorry you appeared to enter an invalid response. We will take you back to the beginning of the game!");
+            }
+            }
         }
             class monsters {
             Random _random = new Random();
